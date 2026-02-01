@@ -9,20 +9,20 @@ const GEAR_DATA = [
       { 
         name: "APUTURE NOVA P600C", 
         spec: "600W RGBWW COLOR SOFT LIGHT PANEL", 
-        img: "p600c.jpg", // 제공해주신 화이트 아치형 스튜디오 현장 사진
-        desc: "최상급 광량과 정밀한 색표현을 제공하는 하이엔드 소프트 패널 (현장 운용 실사)"
+        img: "./p600c.jpg",
+        desc: "최상급 광량과 정밀한 색표현을 제공하는 하이엔드 소프트 패널 (제공된 현장 실사)"
       },
       { 
         name: "APUTURE STORM 400X", 
         spec: "400W BI-COLOR POINT SOURCE LED", 
-        img: "storm400x.jpg", // 제공해주신 레드 라벨 클로즈업 사진
-        desc: "강력한 출력과 내구성을 갖춘 고성능 포인트 소스 조명"
+        img: "./storm400x.jpg",
+        desc: "강력한 출력과 레드 포인트 디자인의 고성능 포인트 소스 조명"
       },
       { 
         name: "APUTURE STORM 80C (3 SET)", 
         spec: "80W FULL-COLOR COMPACT LED KIT", 
-        img: "storm80c.jpg", // 제공해주신 야외 숲속 현장 사진
-        desc: "야외 및 특수 로케이션에서 빛을 발하는 컴팩트 RGBWW 시스템"
+        img: "./storm80c.jpg",
+        desc: "야외 숲속 촬영 및 특수 로케이션 최적화 콤팩트 시스템"
       },
     ]
   },
@@ -32,20 +32,20 @@ const GEAR_DATA = [
       { 
         name: "AVENGER C-STAND", 
         spec: "CENTURY STAND WITH GRIP HEAD & ARM", 
-        img: "cstand.jpg", // 제공해주신 C-Stand 단독 사진
-        desc: "정교한 라이팅 설계를 위한 업계 표준 C-Stand 시스템"
+        img: "./cstand.jpg",
+        desc: "크롬 마감의 견고한 고정력, 정교한 라이팅 설계를 위한 표준 그립"
       },
       { 
         name: "AVENGER COMBO STAND", 
         spec: "TRIPLE RISER HEAVY DUTY STAND", 
-        img: "combostand.jpg", // 제공해주신 실버 스탠드 단독 사진
-        desc: "중량 조명 장비를 안전하게 지지하는 고하중 전용 스탠드"
+        img: "./combostand.jpg",
+        desc: "중량 조명 장비를 안전하게 지지하는 고하중 전용 실버 스탠드"
       },
       { 
         name: "APPLE BOXES SET", 
         spec: "FULL / HALF / QUARTER / PANCAKE", 
-        img: "applebox.jpg", // 제공해주신 검은색 애플박스 사진
-        desc: "현장 높낮이 조절 및 안정적 지지를 위한 전문 애플박스 셋"
+        img: "./applebox.jpg",
+        desc: "검은색 마감, 현장 높낮이 조절 및 안정적 지지를 위한 전문 박스셋"
       },
     ]
   },
@@ -55,7 +55,7 @@ const GEAR_DATA = [
       { 
         name: "LIGHT MODIFIERS", 
         spec: "DOME / LANTERN / CHIMERA", 
-        img: "https://images.unsplash.com/photo-1543840540-36657c90859a?auto=format&fit=crop&q=80&w=800",
+        img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800",
         desc: "빛의 확산과 질감을 제어하는 돔, 랜턴, 키메라 풀세트"
       },
       { 
@@ -114,14 +114,15 @@ export const Equipment: React.FC = () => {
                   key={iIdx} 
                   className="group relative flex flex-col bg-black transition-all duration-500 hover:bg-zinc-950"
                 >
-                  <div className="aspect-square overflow-hidden relative">
+                  <div className="aspect-square overflow-hidden relative bg-zinc-900">
                     <img
                       src={item.img}
                       alt={item.name}
-                      className="w-full h-full object-cover transition-all duration-1000 grayscale brightness-[0.5] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all duration-700 brightness-100 group-hover:scale-105"
                       onError={(e) => {
-                        // 실제 이미지 경로가 없을 경우를 대비해 placeholder 이미지로 대체 (제공된 이미지를 브라우저가 찾을 수 있도록 함)
-                        e.currentTarget.src = `https://source.unsplash.com/featured/?cinematography,lighting,${item.name.split(' ')[0]}`;
+                        // 이미지 로드 실패 시 보라색/검은색 그라데이션으로 placeholder 처리
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.parentElement?.classList.add('bg-gradient-to-br', 'from-zinc-800', 'to-black');
                       }}
                     />
                     <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -152,7 +153,7 @@ export const Equipment: React.FC = () => {
                  <Layers size={16} /> Modified Lighting System
                </h2>
                <p className="text-zinc-400 font-light text-[15px] leading-relaxed break-keep">
-                 단순한 조명을 넘어, **Light Dome, Lantern, Chimera** 등 다양한 모디파이어와 **Aurora 4x4 Flags**를 통해 빛의 부드러움과 날카로움을 자유자재로 조율합니다.
+                 단순한 조명을 넘어, **Light Dome, Lantern, Chimera** 등 다양한 모디파이어를 통해 빛의 부드러움과 날카로움을 자유자재로 조율합니다.
                </p>
             </div>
 
@@ -163,7 +164,7 @@ export const Equipment: React.FC = () => {
                      <span className="text-xs font-black tracking-widest uppercase italic">Power Stability</span>
                   </div>
                   <p className="text-zinc-500 text-[13px] font-light leading-relaxed break-keep">
-                     99wh부터 212wh까지 대용량 V-mount 시스템으로 안정적인 촬영 환경을 유지합니다.
+                     대용량 V-mount 시스템으로 안정적인 촬영 환경을 유지합니다.
                   </p>
                </div>
                <div className="space-y-4">
@@ -172,7 +173,7 @@ export const Equipment: React.FC = () => {
                      <span className="text-xs font-black tracking-widest uppercase italic">Grip Standard</span>
                   </div>
                   <p className="text-zinc-500 text-[13px] font-light leading-relaxed break-keep">
-                     Avenger 전문 그립 시스템을 운용하여 현장의 안전과 정교함을 보장합니다.
+                     Avenger 전문 그립 시스템을 운용하여 현장의 안전을 보장합니다.
                   </p>
                </div>
             </div>
@@ -184,8 +185,8 @@ export const Equipment: React.FC = () => {
              <div className="space-y-12">
                {[
                  { title: "PRECISION", desc: "고출력 Bi-Color 및 RGBWW 제어를 통한 정밀한 색온도 매칭" },
-                 { title: "EFFICIENCY", desc: "무선 제어 시스템과 배터리 솔루션을 활용한 빠른 현장 기동성" },
-                 { title: "VERSATILITY", desc: "광고부터 패션 필름까지 모든 톤앤매너를 수용하는 광범위한 리소스" }
+                 { title: "EFFICIENCY", desc: "무선 제어 시스템을 활용한 빠른 현장 기동성" },
+                 { title: "VERSATILITY", desc: "모든 톤앤매너를 수용하는 광범위한 리소스" }
                ].map((item, i) => (
                  <div key={i} className="space-y-2">
                    <p className="text-white font-black text-[11px] tracking-[0.3em] uppercase italic">{item.title}</p>
