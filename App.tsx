@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { PortfolioGrid } from './components/PortfolioGrid';
-import { About } from './components/About';
-import { Services } from './components/Services';
-import { Footer } from './components/Footer';
-import { ProjectDetail } from './components/ProjectDetail';
+import { Header } from './components/Header.tsx';
+import { Hero } from './components/Hero.tsx';
+import { PortfolioGrid } from './components/PortfolioGrid.tsx';
+import { About } from './components/About.tsx';
+import { Services } from './components/Services.tsx';
+import { Footer } from './components/Footer.tsx';
+import { ProjectDetail } from './components/ProjectDetail.tsx';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
