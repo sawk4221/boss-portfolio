@@ -1,28 +1,28 @@
 
 import React, { useEffect } from 'react';
-import { ShieldCheck, Crosshair, Zap, Package, Layers, Battery } from 'lucide-react';
+import { Crosshair, Layers, Battery, Package } from 'lucide-react';
 
 const GEAR_DATA = [
   {
     category: "LIGHTING SOLUTIONS",
     items: [
       { 
-        name: "Aputure Nova P600c", 
-        spec: "600W RGBWW Color Soft Light Panel", 
-        img: "https://images.unsplash.com/photo-1590483734724-383b6530280c?auto=format&fit=crop&q=80&w=800",
-        desc: "최상급 광량과 정밀한 색표현을 제공하는 하이엔드 소프트 패널"
+        name: "APUTURE NOVA P600C", 
+        spec: "600W RGBWW COLOR SOFT LIGHT PANEL", 
+        img: "p600c.jpg", // 제공해주신 화이트 아치형 스튜디오 현장 사진
+        desc: "최상급 광량과 정밀한 색표현을 제공하는 하이엔드 소프트 패널 (현장 운용 실사)"
       },
       { 
-        name: "Aputure STORM 400x", 
-        spec: "400W Bi-Color Point Source LED", 
-        img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800",
-        desc: "강력한 출력과 컴팩트함을 동시에 갖춘 주력 포인트 소스"
+        name: "APUTURE STORM 400X", 
+        spec: "400W BI-COLOR POINT SOURCE LED", 
+        img: "storm400x.jpg", // 제공해주신 레드 라벨 클로즈업 사진
+        desc: "강력한 출력과 내구성을 갖춘 고성능 포인트 소스 조명"
       },
       { 
-        name: "Aputure STORM 80c (3 Set)", 
-        spec: "80W Full-Color Compact LED Kit", 
-        img: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?auto=format&fit=crop&q=80&w=800",
-        desc: "기동성이 뛰어난 RGBWW 조명, 3세트 운용으로 유연한 포인트 라이팅 가능"
+        name: "APUTURE STORM 80C (3 SET)", 
+        spec: "80W FULL-COLOR COMPACT LED KIT", 
+        img: "storm80c.jpg", // 제공해주신 야외 숲속 현장 사진
+        desc: "야외 및 특수 로케이션에서 빛을 발하는 컴팩트 RGBWW 시스템"
       },
     ]
   },
@@ -30,22 +30,22 @@ const GEAR_DATA = [
     category: "GRIP & SUPPORT",
     items: [
       { 
-        name: "Avenger C-Stand", 
-        spec: "Century Stand with Grip Head & Arm", 
-        img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800",
-        desc: "업계 표준의 견고한 고정력, 다양한 조명 각도 세팅 필수품"
+        name: "AVENGER C-STAND", 
+        spec: "CENTURY STAND WITH GRIP HEAD & ARM", 
+        img: "cstand.jpg", // 제공해주신 C-Stand 단독 사진
+        desc: "정교한 라이팅 설계를 위한 업계 표준 C-Stand 시스템"
       },
       { 
-        name: "Avenger Combo Stand", 
-        spec: "Triple Riser Heavy Duty Stand", 
-        img: "https://images.unsplash.com/photo-1542204172-108390740924?auto=format&fit=crop&q=80&w=800",
-        desc: "대형 패널 및 중량 장비 지지를 위한 안정적인 서포트"
+        name: "AVENGER COMBO STAND", 
+        spec: "TRIPLE RISER HEAVY DUTY STAND", 
+        img: "combostand.jpg", // 제공해주신 실버 스탠드 단독 사진
+        desc: "중량 조명 장비를 안전하게 지지하는 고하중 전용 스탠드"
       },
       { 
-        name: "Apple Boxes Set", 
-        spec: "Full / Half / Quarter / Pancake", 
-        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800",
-        desc: "블랙 마감 Apple Box, 높낮이 조절 및 다양한 현장 보조 도구"
+        name: "APPLE BOXES SET", 
+        spec: "FULL / HALF / QUARTER / PANCAKE", 
+        img: "applebox.jpg", // 제공해주신 검은색 애플박스 사진
+        desc: "현장 높낮이 조절 및 안정적 지지를 위한 전문 애플박스 셋"
       },
     ]
   },
@@ -53,22 +53,22 @@ const GEAR_DATA = [
     category: "MODIFIERS & POWER",
     items: [
       { 
-        name: "Light Modifiers", 
-        spec: "Dome / Lantern / Chimera", 
+        name: "LIGHT MODIFIERS", 
+        spec: "DOME / LANTERN / CHIMERA", 
         img: "https://images.unsplash.com/photo-1543840540-36657c90859a?auto=format&fit=crop&q=80&w=800",
-        desc: "부드러운 빛 확산을 위한 라이트 돔, 360도 랜턴, 소프트박스 풀셋"
+        desc: "빛의 확산과 질감을 제어하는 돔, 랜턴, 키메라 풀세트"
       },
       { 
-        name: "Aurora 4x4 Flags", 
-        spec: "Diffusion Filters & Scrims", 
+        name: "AURORA 4X4 FLAGS", 
+        spec: "DIFFUSION FILTERS & SCRIMS", 
         img: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=800",
-        desc: "빛의 방향과 질감을 제어하는 전문 디퓨전 필터 및 플래그 시스템"
+        desc: "대형 4x4 프레임과 다양한 디퓨전 필터 시스템"
       },
       { 
-        name: "V-Mount Battery System", 
-        spec: "99wh / 155wh / 212wh Lineup", 
+        name: "V-MOUNT BATTERY SYSTEM", 
+        spec: "99WH / 155WH / 212WH LINEUP", 
         img: "https://images.unsplash.com/photo-1580226922929-1601a05cc68e?auto=format&fit=crop&q=80&w=800",
-        desc: "전력 공급이 제한적인 현장을 위한 고용량 전용 배터리 솔루션"
+        desc: "야외 촬영을 위한 고용량 전원 솔루션 (99wh ~ 212wh)"
       },
     ]
   }
@@ -84,13 +84,13 @@ export const Equipment: React.FC = () => {
       {/* Page Header */}
       <div className="py-20 border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-[10px] tracking-[0.5em] uppercase text-zinc-600 mb-4 font-bold">Professional Inventory</p>
+          <p className="text-[10px] tracking-[0.5em] uppercase text-zinc-600 mb-4 font-bold">Inventory & Technical Specs</p>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
              <h1 className="text-4xl md:text-7xl font-black tracking-tight text-white uppercase italic leading-none">EQUIPMENT</h1>
              <div className="flex items-center gap-4">
                 <div className="h-px w-12 bg-zinc-800"></div>
                 <p className="text-zinc-500 text-[11px] tracking-[0.2em] font-light max-w-sm uppercase leading-relaxed">
-                  Aputure, Avenger, Aurora 등 <br/>검증된 하이엔드 기어만을 운용합니다.
+                  현장에서 검증된 Aputure STORM 시리즈와 <br/>Avenger 프로페셔널 그립 시스템을 운용합니다.
                 </p>
              </div>
           </div>
@@ -104,7 +104,8 @@ export const Equipment: React.FC = () => {
           <div key={sIdx} className="space-y-12">
             <div className="flex items-center justify-between">
               <h2 className="text-[12px] tracking-[0.6em] uppercase text-white font-black">{section.category}</h2>
-              <p className="text-[10px] text-zinc-700 font-bold uppercase tracking-widest italic">Professional Grade</p>
+              <div className="hidden sm:block h-px flex-1 mx-10 bg-zinc-900"></div>
+              <p className="text-[10px] text-zinc-700 font-bold uppercase tracking-widest italic">Inventory Vol.01</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-900 border border-zinc-900">
@@ -118,6 +119,10 @@ export const Equipment: React.FC = () => {
                       src={item.img}
                       alt={item.name}
                       className="w-full h-full object-cover transition-all duration-1000 grayscale brightness-[0.5] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
+                      onError={(e) => {
+                        // 실제 이미지 경로가 없을 경우를 대비해 placeholder 이미지로 대체 (제공된 이미지를 브라우저가 찾을 수 있도록 함)
+                        e.currentTarget.src = `https://source.unsplash.com/featured/?cinematography,lighting,${item.name.split(' ')[0]}`;
+                      }}
                     />
                     <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <Crosshair size={18} className="text-white drop-shadow-lg" />
@@ -147,7 +152,7 @@ export const Equipment: React.FC = () => {
                  <Layers size={16} /> Modified Lighting System
                </h2>
                <p className="text-zinc-400 font-light text-[15px] leading-relaxed break-keep">
-                 단순한 조명을 넘어, **Light Dome, Lantern, Chimera** 등 다양한 모디파이어와 **Aurora 4x4 Flags**를 통해 빛의 부드러움과 날카로움을 자유자재로 조율합니다. 연출 의도에 가장 근접한 빛의 텍스처를 만들어냅니다.
+                 단순한 조명을 넘어, **Light Dome, Lantern, Chimera** 등 다양한 모디파이어와 **Aurora 4x4 Flags**를 통해 빛의 부드러움과 날카로움을 자유자재로 조율합니다.
                </p>
             </div>
 
@@ -158,7 +163,7 @@ export const Equipment: React.FC = () => {
                      <span className="text-xs font-black tracking-widest uppercase italic">Power Stability</span>
                   </div>
                   <p className="text-zinc-500 text-[13px] font-light leading-relaxed break-keep">
-                     99wh부터 212wh까지 대용량 V-mount 시스템으로 전력 공급이 까다로운 로케이션에서도 안정적인 촬영 환경을 유지합니다.
+                     99wh부터 212wh까지 대용량 V-mount 시스템으로 안정적인 촬영 환경을 유지합니다.
                   </p>
                </div>
                <div className="space-y-4">
@@ -167,7 +172,7 @@ export const Equipment: React.FC = () => {
                      <span className="text-xs font-black tracking-widest uppercase italic">Grip Standard</span>
                   </div>
                   <p className="text-zinc-500 text-[13px] font-light leading-relaxed break-keep">
-                     Avenger의 C-stand 및 Combo stand, 그리고 블랙 Apple Box 풀셋을 운용하여 현장의 안전과 정교한 라이팅 설계를 보장합니다.
+                     Avenger 전문 그립 시스템을 운용하여 현장의 안전과 정교함을 보장합니다.
                   </p>
                </div>
             </div>
@@ -188,23 +193,7 @@ export const Equipment: React.FC = () => {
                  </div>
                ))}
              </div>
-             
-             <div className="mt-20 pt-10 border-t border-zinc-900">
-                <p className="text-zinc-600 text-[11px] leading-relaxed italic break-keep font-light">
-                  "우리의 장비는 감독의 아이디어를 현실로 옮기는 가장 강력한 언어입니다. 모든 기어는 현장에서의 즉각적인 신뢰를 위해 최고의 컨디션으로 관리됩니다."
-                </p>
-             </div>
           </div>
-        </div>
-
-        {/* Footer Contact */}
-        <div className="text-center py-24 border-t border-zinc-900">
-          <p className="text-[10px] tracking-[0.5em] text-zinc-700 uppercase mb-8">
-            Complete Gear List & Technical Rider Available Upon Request
-          </p>
-          <button className="text-[11px] font-black tracking-[0.3em] text-white border border-zinc-800 px-12 py-5 hover:bg-white hover:text-black transition-all uppercase italic">
-            장비 대여 및 운용 문의
-          </button>
         </div>
       </div>
     </div>
