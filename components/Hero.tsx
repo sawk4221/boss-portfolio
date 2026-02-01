@@ -97,8 +97,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenProject }) => {
         </p>
         
         <div className="flex items-center justify-between w-full">
-          <button className="hidden md:block text-zinc-900 hover:text-zinc-600 transition-all p-4" onClick={handlePrev}>
-            <ChevronLeft size={20} strokeWidth={1} />
+          <button 
+            className="hidden md:block text-zinc-800 hover:text-white transition-all p-2 -ml-12" 
+            onClick={handlePrev}
+            aria-label="Previous project"
+          >
+            <ChevronLeft size={64} strokeWidth={0.5} />
           </button>
           
           <div className="flex-1 px-4 overflow-hidden text-center">
@@ -107,8 +111,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenProject }) => {
             </h2>
           </div>
 
-          <button className="hidden md:block text-zinc-900 hover:text-zinc-600 transition-all p-4" onClick={handleNext}>
-            <ChevronRight size={20} strokeWidth={1} />
+          <button 
+            className="hidden md:block text-zinc-800 hover:text-white transition-all p-2 -mr-12" 
+            onClick={handleNext}
+            aria-label="Next project"
+          >
+            <ChevronRight size={64} strokeWidth={0.5} />
           </button>
         </div>
       </div>

@@ -257,6 +257,18 @@ const projects = [
   },
   {
     id: 22,
+    title: 'Maxim Mocha Gold | Commercial',
+    img: 'https://img.youtube.com/vi/XOTGJ4mHwaI/maxresdefault.jpg',
+    details: {
+      wrapUp: '맥심 모카골드 브랜드 캠페인입니다.\n\n커피 한 잔이 주는 일상의 여유와 부드러운 풍미를 시각화하기 위해, 따뜻한 텅스텐 톤의 앰비언트 라이트를 활용하여 포근하고 안락한 공간감을 연출했습니다. (2024.10.28)',
+      client: '동서식품',
+      category: 'Commercial',
+      role: 'Bestboy Jr (Lighting team)',
+      youtubeUrl: 'https://www.youtube.com/watch?v=XOTGJ4mHwaI'
+    }
+  },
+  {
+    id: 23,
     title: 'Nepa | AIR SUMMIT DOWN',
     img: 'https://img.youtube.com/vi/gp5kw-CITIE/maxresdefault.jpg',
     details: {
@@ -268,7 +280,7 @@ const projects = [
     }
   },
   {
-    id: 23,
+    id: 24,
     title: 'Ottogi | X.O. 만두',
     img: 'https://img.youtube.com/vi/HRpq70B11EI/maxresdefault.jpg',
     details: {
