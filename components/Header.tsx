@@ -4,19 +4,18 @@ import { Menu, X, Instagram, Youtube } from 'lucide-react';
 
 interface HeaderProps {
   scrolled: boolean;
-  currentView: 'home' | 'equipment' | 'inquiry';
-  onViewChange: (view: 'home' | 'equipment' | 'inquiry') => void;
+  currentView: 'home' | 'about' | 'equipment' | 'inquiry';
+  onViewChange: (view: 'home' | 'about' | 'equipment' | 'inquiry') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ scrolled, currentView, onViewChange }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  // 사용자가 제공한 실제 구글 폼 링크
   const GOOGLE_FORM_URL = "https://forms.gle/9WMYmoDWF1aG3cHk9";
 
   const navItems = [
     { name: 'WORK', href: '#work', type: 'home' },
-    { name: 'ABOUT', href: '#about', type: 'home' },
+    { name: 'ABOUT', href: '#about', type: 'about' },
     { name: 'EQUIPMENT', href: '#equipment', type: 'equipment' },
     { name: 'CONTACT', href: '#contact', type: 'footer' },
     { name: '제작문의', href: GOOGLE_FORM_URL, type: 'external' },
@@ -24,7 +23,6 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, currentView, onViewCha
 
   const handleNavClick = (e: React.MouseEvent, item: typeof navItems[0]) => {
     if (item.type === 'external') {
-      // 외부 링크는 기본 동작(새 창 열기)을 따르도록 하고 메뉴만 닫습니다.
       setIsOpen(false);
       return;
     }
@@ -32,10 +30,10 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, currentView, onViewCha
     e.preventDefault();
     setIsOpen(false);
     
-    if (item.type === 'equipment') {
+    if (item.type === 'about') {
+      onViewChange('about');
+    } else if (item.type === 'equipment') {
       onViewChange('equipment');
-    } else if (item.type === 'inquiry') {
-      onViewChange('inquiry');
     } else if (item.type === 'home' || item.type === 'footer') {
       if (currentView !== 'home' && item.type === 'home') {
         onViewChange('home');
@@ -85,13 +83,13 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, currentView, onViewCha
                 rel={item.type === 'external' ? 'noopener noreferrer' : undefined}
                 onClick={(e) => handleNavClick(e, item)}
                 className={`text-[11px] font-black tracking-[0.4em] transition-all uppercase relative group/nav ${
-                  (item.type === currentView) || (item.type === 'home' && currentView === 'home')
+                  (item.type === currentView) || (item.type === 'home' && currentView === 'home' && item.name === 'WORK')
                   ? 'text-white' : 'text-zinc-600 hover:text-white'
                 } ${item.type === 'external' ? 'text-zinc-400' : ''}`}
               >
                 {item.name}
                 <span className={`absolute -bottom-1 left-0 h-[1px] bg-white transition-all duration-[350ms] ${
-                  (item.type === currentView && item.type !== 'external') ? 'w-full' : 'w-0 group-hover/nav:w-full'
+                  (item.type === currentView) ? 'w-full' : 'w-0 group-hover/nav:w-full'
                 }`}></span>
               </a>
             ))}

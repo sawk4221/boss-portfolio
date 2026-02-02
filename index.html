@@ -30,16 +30,26 @@
             letter-spacing: 0.4em;
             text-transform: uppercase;
         }
-        /* Fade in animations */
+        
+        /* Animations */
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
         }
-        .animate-fade-in {
-          animation: fadeIn 1s ease forwards;
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        
-        /* YouTube background container */
+        .animate-fade-in {
+          animation: fadeIn 1.2s ease forwards;
+        }
+        .animate-slide-up {
+          animation: slideUp 1s ease forwards;
+        }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-500 { animation-delay: 500ms; }
+
+        /* Video background container */
         .video-background {
           position: absolute;
           top: 50%;
@@ -48,12 +58,6 @@
           height: 100vh;
           transform: translate(-50%, -50%);
           pointer-events: none;
-        }
-        @media (min-aspect-ratio: 16/9) {
-          .video-background { height: 56.25vw; }
-        }
-        @media (max-aspect-ratio: 16/9) {
-          .video-background { width: 177.78vh; }
         }
     </style>
 <script type="importmap">

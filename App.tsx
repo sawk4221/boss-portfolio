@@ -12,7 +12,7 @@ import { ProjectDetail } from './components/ProjectDetail.tsx';
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [selectedProject, setSelectedProject] = useState<any>(null);
-  const [currentView, setCurrentView] = useState<'home' | 'equipment' | 'inquiry'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'about' | 'equipment' | 'inquiry'>('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,10 +52,15 @@ const App: React.FC = () => {
               </div>
               <PortfolioGrid onSelectProject={setSelectedProject} />
             </section>
-            <About />
           </>
         )}
         
+        {currentView === 'about' && (
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-1000">
+            <About />
+          </div>
+        )}
+
         {currentView === 'equipment' && (
           <div className="animate-in fade-in slide-in-from-bottom-2 duration-700">
             <Equipment />
