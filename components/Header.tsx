@@ -67,8 +67,8 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, currentView, onViewCha
                   e.currentTarget.parentElement?.querySelector('.fallback-logo')?.classList.remove('hidden');
                 }}
               />
-              <h1 className="fallback-logo hidden text-4xl md:text-5xl font-black tracking-[-0.05em] uppercase leading-none text-white">
-                LIGHTBOSS
+              <h1 className="fallback-logo hidden text-4xl md:text-5xl font-black tracking-[-0.05em] uppercase leading-none text-white transition-colors duration-500">
+                LIGHT<span className="text-[#8a8a8a] group-hover:text-white transition-colors duration-500">BOSS</span>
               </h1>
               <div className="w-full h-[2px] bg-white/20 mt-1 origin-left scale-x-50 group-hover:scale-x-100 transition-transform duration-[350ms]"></div>
             </div>

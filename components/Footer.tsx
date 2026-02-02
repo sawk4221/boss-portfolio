@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
             <h2 className="text-xs tracking-[0.5em] uppercase text-zinc-600 font-bold">C O N T A C T</h2>
             <div className="space-y-6">
               {/* Logo Image for Footer */}
-              <div className="inline-flex flex-col items-start">
+              <div className="inline-flex flex-col items-start group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <img 
                   src="logo.png" 
                   alt="LIGHTBOSS" 
@@ -22,8 +22,8 @@ export const Footer: React.FC = () => {
                     e.currentTarget.parentElement?.querySelector('.fallback-logo')?.classList.remove('hidden');
                   }}
                 />
-                <h3 className="fallback-logo hidden text-4xl font-black tracking-[-0.05em] uppercase text-white">
-                  LIGHTBOSS
+                <h3 className="fallback-logo hidden text-4xl font-black tracking-[-0.05em] uppercase text-white transition-colors duration-500">
+                  LIGHT<span className="text-[#8a8a8a] group-hover:text-white transition-colors duration-500">BOSS</span>
                 </h3>
               </div>
               <p className="text-zinc-400 font-light max-w-xs text-[13px] leading-relaxed break-keep">
