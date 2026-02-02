@@ -16,7 +16,7 @@ export const About: React.FC = () => {
             
             <div className="mt-12 pt-8 border-t border-zinc-900">
               <p className="text-[10px] tracking-[0.2em] text-zinc-600 leading-loose uppercase font-medium">
-                Lighting Director<br/>
+                Lighting Director & DoP<br/>
                 Founder of LightBoss
               </p>
             </div>
@@ -26,18 +26,20 @@ export const About: React.FC = () => {
           <div className="w-full md:w-2/3 space-y-12">
             <div className="relative">
               <p className="text-xl md:text-2xl leading-snug text-zinc-100 font-light break-keep">
-                안녕하세요, <span className="text-white font-bold">LightBoss 조명팀</span>의 조명감독 서보윤입니다.
+                안녕하세요, <span className="text-white font-bold">촬영감독 출신</span>의 조명감독 서보윤입니다.
               </p>
             </div>
             
             <p className="text-base md:text-lg leading-relaxed text-zinc-400 font-light break-keep">
-              현장 중심의 조명감독으로 활동 중이며, 프로젝트 규모에 따라 전문 조명팀을 구성해 조명 파트를 총괄 진행하고 있습니다. 합리적인 예산 안에서, 기대 이상의 퀄리티로 완성도 높은 라이팅 환경을 제공합니다.
+              현재 <span className="text-white font-medium">LightBoss 조명팀</span>을 이끌며 조명 파트를 전문으로 수행하고 있지만, 촬영감독으로서의 실무 경험과 시각을 바탕으로 <span className="text-white font-medium">중소규모 제작을 위한 'DP 시스템'</span> 운용 및 <span className="text-white font-medium">DoP(Director of Photography)</span> 역할 수행도 가능합니다.
             </p>
 
             <div className="space-y-6 pt-6 border-t border-zinc-900/50">
-              <h4 className="text-white font-bold text-lg tracking-tight">한 끗 차이의 완성도</h4>
+              <h4 className="text-white font-bold text-lg tracking-tight">촬영의 메커니즘을 이해하는 라이팅</h4>
               <p className="text-zinc-400 font-light leading-loose text-[15px] md:text-base break-keep">
-                조명은 결국 <span className="text-white font-medium">‘한 끗 차이’</span>에서 완성도가 갈립니다. 그 미묘한 차이를 놓치지 않기 위해, 매 컷마다 디테일을 고민하며 어떻게 하면 더 좋은 화면이 나올지 함께 설계합니다. 단순히 조명을 세팅하는 역할이 아니라, 촬영팀·연출팀과 함께 방향을 맞추고 결과물을 만들어가는 <span className="text-white font-medium">현장 파트너</span>가 되어드립니다.
+                빛은 결국 카메라 렌즈를 통해 완성됩니다. 촬영자의 관점에서 빛과 그림자의 조화를 고민하며, 단순히 조명을 설치하는 것을 넘어 영상 전체의 톤앤매너를 함께 설계합니다. 
+                <br/><br/>
+                대규모 프로덕션의 전문 조명팀 지원은 물론, 효율적인 인원과 장비가 필요한 프로젝트에서도 <span className="text-white font-medium">촬영과 조명을 통합적으로 아우르는 최적의 제작 환경</span>을 제안해 드립니다. 연출팀의 의도를 가장 정확하게 시각화하는 <span className="text-white font-medium">현장 파트너</span>가 되겠습니다.
               </p>
             </div>
           </div>
