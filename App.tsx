@@ -5,13 +5,14 @@ import { Hero } from './components/Hero.tsx';
 import { PortfolioGrid } from './components/PortfolioGrid.tsx';
 import { About } from './components/About.tsx';
 import { Equipment } from './components/Equipment.tsx';
+import { Inquiry } from './components/Inquiry.tsx';
 import { Footer } from './components/Footer.tsx';
 import { ProjectDetail } from './components/ProjectDetail.tsx';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [selectedProject, setSelectedProject] = useState<any>(null);
-  const [currentView, setCurrentView] = useState<'home' | 'equipment'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'equipment' | 'inquiry'>('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +30,6 @@ const App: React.FC = () => {
     }
   }, [selectedProject]);
 
-  // 페이지 전환 시 최상단으로 이동
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentView]);
@@ -43,7 +43,7 @@ const App: React.FC = () => {
       />
       
       <main className="pt-32 md:pt-40">
-        {currentView === 'home' ? (
+        {currentView === 'home' && (
           <>
             <Hero onOpenProject={setSelectedProject} />
             <section id="work" className="py-24">
@@ -54,9 +54,17 @@ const App: React.FC = () => {
             </section>
             <About />
           </>
-        ) : (
+        )}
+        
+        {currentView === 'equipment' && (
           <div className="animate-in fade-in slide-in-from-bottom-2 duration-700">
             <Equipment />
+          </div>
+        )}
+
+        {currentView === 'inquiry' && (
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-700">
+            <Inquiry />
           </div>
         )}
       </main>
