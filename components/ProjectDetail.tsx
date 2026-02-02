@@ -14,7 +14,7 @@ interface ProjectDetailProps {
       production: string;
       category: string;
       role?: string;
-      youtubeUrl?: string; // 이 필드에 인스타그램 링크가 들어와도 처리 가능하게 수정
+      youtubeUrl?: string;
     };
   };
   onClose: () => void;
@@ -67,7 +67,6 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }
       return `https://www.youtube.com/embed/${media.id}?${params.toString()}`;
     }
     if (media.type === 'instagram') {
-      // 인스타그램은 /embed/를 붙여주면 깔끔하게 나옵니다.
       return `https://www.instagram.com/reel/${media.id}/embed/`;
     }
     return null;
@@ -119,10 +118,10 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }
               )}
             </div>
 
-            {/* Title & Description */}
+            {/* Title & Description: Reduced font size and tracking to prevent wrapping */}
             <div className="space-y-8 pr-4">
-              <h2 className="text-3xl md:text-5xl font-light tracking-[0.2em] text-white uppercase leading-tight">
-                {project.title.split('|')[0]} <span className="text-zinc-500">|</span> {project.title.split('|')[1] || ''}
+              <h2 className="text-xl md:text-3xl lg:text-4xl font-light tracking-[0.1em] text-white uppercase leading-tight">
+                {project.title.split('|')[0]} <span className="text-zinc-600">|</span> {project.title.split('|')[1] || ''}
               </h2>
               <div className="h-px w-20 bg-zinc-800"></div>
               <p className="text-[14px] text-zinc-400 leading-relaxed font-light whitespace-pre-line break-keep max-w-3xl">

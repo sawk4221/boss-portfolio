@@ -27,7 +27,6 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, currentView, onViewCha
     } else if (item.type === 'home' || item.type === 'footer') {
       if (currentView !== 'home' && item.type === 'home') {
         onViewChange('home');
-        // 홈으로 이동 후 스크롤을 위해 약간의 지연을 줌
         setTimeout(() => {
           const el = document.querySelector(item.href);
           el?.scrollIntoView({ behavior: 'smooth' });
@@ -37,82 +36,92 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, currentView, onViewCha
   };
 
   return (
-    <nav className={`fixed w-full z-[80] transition-all duration-500 bg-black/90 backdrop-blur-md border-b border-zinc-900 py-4 md:py-6`}>
+    <nav className={`fixed w-full z-[80] transition-all duration-500 bg-black/95 backdrop-blur-xl border-b border-zinc-900 py-6 md:py-8`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           
-          {/* Top Row: Logo Image */}
+          {/* LOGO SECTION: Removed Skew/Italic, Applied Two-tone Color with Hover Effect */}
           <div 
-            className="transition-all duration-500 mb-6 scale-100 group cursor-pointer relative"
+            className="transition-all duration-700 mb-8 group cursor-pointer relative"
             onClick={() => onViewChange('home')}
           >
             <div className="flex flex-col items-center">
               <img 
                 src="logo.png" 
                 alt="LIGHTBOSS" 
-                className="h-10 md:h-12 w-auto object-contain"
+                className="h-10 md:h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.parentElement?.querySelector('.fallback-logo')?.classList.remove('hidden');
                 }}
               />
-              <h1 className="fallback-logo hidden text-3xl md:text-4xl font-black tracking-[-0.05em] uppercase text-white">
-                LIGHTBOSS
+              <h1 className="fallback-logo hidden text-4xl md:text-5xl font-black tracking-[-0.05em] uppercase leading-none">
+                <span className="text-white transition-colors duration-500">LIGHT</span>
+                <span className="text-[#8a8a8a] transition-colors duration-500 group-hover:text-white">BOSS</span>
               </h1>
+              {/* Underline Animation: Maintained 350ms speed */}
+              <div className="w-full h-[2px] bg-white/20 mt-1 origin-left scale-x-50 group-hover:scale-x-100 transition-transform duration-[350ms]"></div>
             </div>
           </div>
 
-          {/* Bottom Row: Centered Navigation */}
-          <div className="hidden md:flex items-center justify-center w-full space-x-12 border-t border-zinc-900/50 pt-5">
+          {/* NAVIGATION SECTION: Maintained straight and clean style */}
+          <div className="hidden md:flex items-center justify-center w-full space-x-16 border-t border-zinc-900/80 pt-7">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item)}
-                className={`text-[10px] font-bold tracking-[0.3em] transition-all uppercase ${
+                className={`text-[11px] font-black tracking-[0.4em] transition-all uppercase relative group/nav ${
                   (item.type === 'equipment' && currentView === 'equipment') || 
-                  (item.type === 'home' && currentView === 'home' && false /* active state logic could be added here */)
-                  ? 'text-white' : 'text-zinc-500 hover:text-white'
+                  (item.type === 'home' && currentView === 'home' && false)
+                  ? 'text-white' : 'text-zinc-600 hover:text-white'
                 }`}
               >
                 {item.name}
+                <span className={`absolute -bottom-1 left-0 h-[1px] bg-white transition-all duration-[350ms] ${
+                  (item.type === 'equipment' && currentView === 'equipment') ? 'w-full' : 'w-0 group-hover/nav:w-full'
+                }`}></span>
               </a>
             ))}
             
-            <div className="flex items-center space-x-5 pl-4 border-l border-zinc-800">
-               <a href="#" className="text-zinc-500 hover:text-white transition-all hover:scale-110">
-                 <Instagram size={16} strokeWidth={1.5} />
+            <div className="flex items-center space-x-6 pl-8 border-l border-zinc-900">
+               <a href="#" className="text-zinc-600 hover:text-white transition-all hover:-translate-y-1">
+                 <Instagram size={18} strokeWidth={1.5} />
                </a>
-               <a href="#" className="text-zinc-500 hover:text-white transition-all hover:scale-110">
-                 <Youtube size={16} strokeWidth={1.5} />
+               <a href="#" className="text-zinc-600 hover:text-white transition-all hover:-translate-y-1">
+                 <Youtube size={18} strokeWidth={1.5} />
                </a>
             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden absolute right-6 top-8">
+          <div className="md:hidden absolute right-6 top-10">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-zinc-500 hover:text-white focus:outline-none"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Nav Overlay */}
+      {/* Mobile Nav Overlay: Applied Two-tone Color to Logo as well */}
       {isOpen && (
-        <div className="md:hidden bg-black/98 backdrop-blur-xl h-screen w-full fixed top-0 left-0 z-[100] flex flex-col items-center justify-center space-y-10 animate-in fade-in duration-300">
+        <div className="md:hidden bg-black/99 backdrop-blur-2xl h-screen w-full fixed top-0 left-0 z-[100] flex flex-col items-center justify-center space-y-12 animate-in fade-in zoom-in-95 duration-300">
           <button
               onClick={() => setIsOpen(false)}
               className="absolute top-10 right-6 text-zinc-500 hover:text-white"
           >
-            <X size={32} strokeWidth={1} />
+            <X size={36} strokeWidth={1} />
           </button>
           
-          <div className="mb-6 flex flex-col items-center px-6" onClick={() => {onViewChange('home'); setIsOpen(false);}}>
-             <img src="logo.png" alt="LIGHTBOSS" className="h-8 w-auto mb-2" />
+          <div className="mb-8 flex flex-col items-center px-6 group" onClick={() => {onViewChange('home'); setIsOpen(false);}}>
+             <h1 className="text-3xl font-black tracking-tighter uppercase">
+               <span className="text-white">LIGHT</span>
+               <span className="text-[#8a8a8a] transition-colors duration-500 group-hover:text-white">BOSS</span>
+             </h1>
+             <div className="w-full h-[2px] bg-white mt-1"></div>
           </div>
 
           {navItems.map((item) => (
@@ -120,17 +129,17 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, currentView, onViewCha
               key={item.name}
               href={item.href}
               onClick={(e) => handleNavClick(e, item)}
-              className={`text-2xl font-light tracking-[0.4em] transition-colors uppercase ${
-                (item.type === 'equipment' && currentView === 'equipment') ? 'text-white' : 'text-zinc-400'
+              className={`text-3xl font-black tracking-[0.3em] transition-colors uppercase ${
+                (item.type === 'equipment' && currentView === 'equipment') ? 'text-white' : 'text-zinc-600 hover:text-white'
               }`}
             >
               {item.name}
             </a>
           ))}
           
-          <div className="flex space-x-10 pt-10 border-t border-zinc-800 w-1/2 justify-center">
-             <Instagram size={24} className="text-zinc-500 hover:text-white transition-colors" />
-             <Youtube size={24} className="text-zinc-500 hover:text-white transition-colors" />
+          <div className="flex space-x-12 pt-12 border-t border-zinc-900 w-1/2 justify-center">
+             <Instagram size={28} className="text-zinc-600 hover:text-white transition-colors" />
+             <Youtube size={28} className="text-zinc-600 hover:text-white transition-colors" />
           </div>
         </div>
       )}
