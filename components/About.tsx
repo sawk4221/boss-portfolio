@@ -1,25 +1,61 @@
 
-import React, { useRef, useEffect } from 'react';
-import { Camera, Film, Lightbulb } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Camera, Film, Lightbulb, Loader2 } from 'lucide-react';
 
 export const About: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.log("Autoplay was prevented:", error);
-      });
+    const video = videoRef.current;
+    if (video) {
+      // 브라우저 정책 대응: DOM 속성으로 직접 muted 설정
+      video.defaultMuted = true;
+      video.muted = true;
+      
+      const attemptPlay = () => {
+        video.play().catch(error => {
+          console.warn("Video autoplay failed. Retrying...", error);
+        });
+      };
+
+      // 영상 데이터가 어느 정도 로드되었을 때 실행
+      video.onloadeddata = () => {
+        setIsVideoLoaded(true);
+        attemptPlay();
+      };
+
+      video.onerror = () => {
+        setVideoError(true);
+        console.error("Video failed to load at path: /about-bg.mp4");
+      };
+
+      // 페이지 진입 시 한 번 더 체크
+      attemptPlay();
     }
   }, []);
 
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
       {/* Cinematic Hero Section with Background Video */}
-      <section className="relative h-screen w-full overflow-hidden border-b border-zinc-900">
-        <div className="absolute inset-0 z-10 bg-black/50"></div>
+      <section className="relative h-screen w-full overflow-hidden border-b border-zinc-900 bg-zinc-950">
+        
+        {/* Cinematic Overlays */}
+        <div className="absolute inset-0 z-10 bg-black/40"></div>
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-transparent to-black"></div>
         
+        {/* Loading Indicator for 64MB Video */}
+        {!isVideoLoaded && !videoError && (
+          <div className="absolute inset-0 z-0 flex items-center justify-center">
+            <div className="flex flex-col items-center space-y-4">
+              <Loader2 className="text-zinc-800 animate-spin" size={40} strokeWidth={1} />
+              <span className="text-[10px] tracking-[0.4em] text-zinc-700 uppercase">Buffering Cinematic Data</span>
+            </div>
+          </div>
+        )}
+
+        {/* Video Background */}
         <video
           ref={videoRef}
           autoPlay
@@ -27,12 +63,14 @@ export const About: React.FC = () => {
           loop
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale-[0.2] scale-100 transition-opacity duration-1000"
+          className={`absolute inset-0 w-full h-full object-cover grayscale-[0.2] transition-opacity duration-[2000ms] ${isVideoLoaded ? 'opacity-60' : 'opacity-0'}`}
         >
-          <source src="about-bg.mp4" type="video/mp4" />
-          <div className="w-full h-full bg-zinc-950"></div>
+          {/* 루트 디렉토리(/)를 명시적으로 가리키도록 수정 */}
+          <source src="/about-bg.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
 
+        {/* Content Overlay */}
         <div className="relative z-20 h-full flex flex-col items-center justify-center px-6 text-center">
           <div className="animate-slide-up">
             <div className="inline-block px-4 py-1 border border-white/20 rounded-full mb-8 backdrop-blur-sm">
@@ -74,9 +112,8 @@ export const About: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
             
-            {/* Sidebar Info */}
             <div className="lg:col-span-4 space-y-20">
-               <div className="space-y-6 animate-slide-up">
+               <div className="space-y-6">
                  <h4 className="text-[10px] tracking-[0.5em] uppercase text-zinc-500 font-black">Identity</h4>
                  <div className="h-px w-8 bg-zinc-800"></div>
                  <p className="text-zinc-300 text-lg leading-relaxed font-light break-keep">
@@ -86,7 +123,7 @@ export const About: React.FC = () => {
                  </p>
                </div>
                
-               <div className="pt-12 border-t border-zinc-900 space-y-8 animate-slide-up delay-300">
+               <div className="pt-12 border-t border-zinc-900 space-y-8">
                  <h4 className="text-[10px] tracking-[0.5em] uppercase text-zinc-500 font-black">Core Areas</h4>
                  <div className="grid grid-cols-1 gap-6">
                     <div className="group border-l border-zinc-900 pl-6 hover:border-white transition-colors py-2">
@@ -105,9 +142,8 @@ export const About: React.FC = () => {
                </div>
             </div>
 
-            {/* Main Narrative Content */}
             <div className="lg:col-span-8 space-y-24">
-              <div className="space-y-10 animate-slide-up">
+              <div className="space-y-10">
                 <p className="text-zinc-500 text-sm tracking-widest uppercase font-bold">Our Philosophy</p>
                 <h3 className="text-3xl md:text-5xl font-bold text-white leading-[1.15] break-keep">
                   카메라가 보는 빛을 <br/>
@@ -126,8 +162,7 @@ export const About: React.FC = () => {
                 </div>
               </div>
 
-              {/* Quote Card */}
-              <div className="relative p-12 md:p-16 border border-zinc-900 bg-zinc-950/40 rounded-sm overflow-hidden animate-slide-up delay-500">
+              <div className="relative p-12 md:p-16 border border-zinc-900 bg-zinc-950/40 rounded-sm overflow-hidden">
                  <div className="absolute top-0 right-0 p-8 opacity-10">
                     <Film size={120} strokeWidth={0.5} />
                  </div>
@@ -150,7 +185,6 @@ export const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-20 border-t border-zinc-900/50">
         <div className="max-w-7xl mx-auto px-6 text-center">
             <p className="text-[10px] tracking-[0.5em] text-zinc-600 uppercase mb-4">Ready to illuminate your project?</p>
